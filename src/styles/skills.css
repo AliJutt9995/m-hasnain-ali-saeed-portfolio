@@ -1,0 +1,553 @@
+/* =========================================================
+   SKILLS SECTION
+========================================================= */
+
+.skills-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 100px 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(34, 211, 238, 0.05),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(139, 92, 246, 0.06),
+      transparent 28%
+    ),
+    #0b0f19;
+}
+
+.skills-container {
+  width: min(
+    1240px,
+    calc(100% - 40px)
+  );
+
+  margin: 0 auto;
+}
+
+.skills-heading {
+  margin-bottom: 50px;
+}
+
+
+/* =========================================================
+   CAROUSEL
+========================================================= */
+
+.skills-carousel {
+  position: relative;
+  width: 100%;
+}
+
+.skills-carousel-viewport {
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 6px 0 10px;
+
+  cursor: grab;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  touch-action: pan-y;
+}
+
+.skills-carousel-viewport.dragging {
+  cursor: grabbing;
+}
+
+.skills-track {
+  display: flex;
+  align-items: stretch;
+
+  gap: 16px;
+
+  width: 100%;
+
+  will-change: transform;
+
+  transition:
+    transform 0.65s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+.skills-track.dragging {
+  transition: none !important;
+}
+
+
+/* =========================================================
+   EACH COLUMN = 2 SKILLS
+========================================================= */
+
+.skills-column {
+  flex: 0 0 auto;
+
+  display: grid;
+
+  grid-template-rows:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 16px;
+
+  width: calc(
+    (100% - 48px) / 4
+  );
+}
+
+
+/* =========================================================
+   SKILL CARD
+========================================================= */
+
+.skill-card {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 160px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 22px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.skill-card * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.skill-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 110px;
+  height: 110px;
+
+  right: -45px;
+  bottom: -50px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      99,
+      102,
+      241,
+      0.11
+    );
+
+  filter: blur(15px);
+
+  transition:
+    transform 0.35s ease;
+}
+
+.skill-card:hover {
+  transform:
+    translateY(-6px);
+
+  border-color:
+    rgba(
+      56,
+      189,
+      248,
+      0.2
+    );
+
+  box-shadow:
+    0 20px 50px
+      rgba(0, 0, 0, 0.22),
+    0 0 30px
+      rgba(56, 189, 248, 0.04);
+}
+
+.skill-card:hover::before {
+  transform: scale(1.4);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.skill-icon {
+  position: relative;
+
+  z-index: 2;
+
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 16px;
+
+  border-radius: 13px;
+
+  color: #67e8f9;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(34, 211, 238, 0.12),
+      rgba(139, 92, 246, 0.11)
+    );
+
+  border:
+    1px solid
+    rgba(56, 189, 248, 0.12);
+}
+
+
+/* =========================================================
+   CARD TYPOGRAPHY
+========================================================= */
+
+.skill-card h3 {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.skill-status {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: 7px;
+
+  color: #7f8b9e;
+
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.skills-navigation {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 30px;
+}
+
+
+/* =========================================================
+   ARROWS
+========================================================= */
+
+.skills-arrow {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  color: #cbd5e1;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.skills-arrow:hover {
+  color: #ffffff;
+
+  background:
+    rgba(
+      56,
+      189,
+      248,
+      0.1
+    );
+
+  border-color:
+    rgba(
+      56,
+      189,
+      248,
+      0.3
+    );
+
+  transform: scale(1.06);
+
+  box-shadow:
+    0 0 18px
+    rgba(56, 189, 248, 0.1);
+}
+
+
+/* =========================================================
+   CAROUSEL DOTS
+========================================================= */
+
+.skills-dots {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 0;
+}
+
+.skills-dot {
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      148,
+      163,
+      184,
+      0.28
+    );
+
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.skills-dot:hover {
+  background:
+    rgba(
+      103,
+      232,
+      249,
+      0.65
+    );
+
+  transform: scale(1.15);
+}
+
+.skills-dot.active {
+  width: 26px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #38bdf8,
+      #8b5cf6
+    );
+
+  box-shadow:
+    0 0 15px
+    rgba(
+      99,
+      102,
+      241,
+      0.32
+    );
+}
+
+
+/* =========================================================
+   TABLET
+   3 COLUMNS × 2 ROWS
+========================================================= */
+
+@media (max-width: 1000px) {
+  .skills-column {
+    width: calc(
+      (100% - 32px) / 3
+    );
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   2 COLUMNS × 2 ROWS
+========================================================= */
+
+@media (max-width: 750px) {
+  .skills-column {
+    width: calc(
+      (100% - 16px) / 2
+    );
+  }
+
+  .skills-heading {
+    margin-bottom: 38px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   1 COLUMN × 2 ROWS
+========================================================= */
+
+@media (max-width: 480px) {
+  .skills-section {
+    padding: 75px 0;
+  }
+
+  .skills-container {
+    width:
+      calc(
+        100% - 28px
+      );
+  }
+
+  .skills-column {
+    width: 100%;
+  }
+
+  .skill-card {
+    min-height: 145px;
+
+    padding: 19px;
+  }
+
+  .skill-icon {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 13px;
+  }
+
+  .skill-card h3 {
+    font-size: 15px;
+  }
+
+  .skill-status {
+    font-size: 10px;
+  }
+
+  .skills-navigation {
+    gap: 9px;
+
+    margin-top: 24px;
+  }
+
+  .skills-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .skills-dots {
+    gap: 7px;
+  }
+
+  .skills-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .skills-dot.active {
+    width: 22px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-track {
+    transition: none;
+  }
+
+  .skill-card,
+  .skill-card::before,
+  .skills-dot,
+  .skills-arrow {
+    transition: none;
+  }
+}

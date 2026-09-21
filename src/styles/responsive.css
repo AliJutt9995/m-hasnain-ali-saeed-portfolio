@@ -1,0 +1,331 @@
+/* =========================
+   GLOBAL RESPONSIVE RULES
+========================= */
+
+@media (max-width: 1200px) {
+  .header-container,
+  .hero-container,
+  .stats-container,
+  .services-container,
+  .projects-container,
+  .process-container,
+  .about-container,
+  .skills-container,
+  .gallery-container,
+  .testimonials-container,
+  .contact-container,
+  .footer-container {
+    width: min(100% - 40px, 1120px);
+  }
+}
+
+
+/* =========================
+   TABLET / SMALL LAPTOP
+========================= */
+
+@media (max-width: 1024px) {
+  .hero-container,
+  .about-container,
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content,
+  .about-content,
+  .contact-info {
+    text-align: center;
+  }
+
+  .hero-actions,
+  .hero-tech-list {
+    justify-content: center;
+  }
+
+  .hero-visual,
+  .about-visual {
+    margin-inline: auto;
+  }
+
+  .services-grid,
+  .projects-grid,
+  .process-timeline,
+  .skills-grid,
+  .gallery-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-methods {
+    max-width: 700px;
+    margin-inline: auto;
+  }
+
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .header-container {
+    min-height: 70px;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 16px;
+    right: 16px;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 16px;
+
+    border-radius: 16px;
+
+    background: rgba(17, 24, 39, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .mobile-menu-button {
+    display: grid;
+  }
+
+  .hero-container {
+    padding: 65px 0;
+    gap: 35px;
+  }
+
+  
+
+  .hero-visual {
+    min-height: 500px;
+  }
+
+  .code-card {
+    width: min(100%, 500px);
+  }
+
+  .services-grid,
+  .projects-grid,
+  .process-timeline,
+  .skills-grid,
+  .gallery-grid,
+  .testimonials-grid {
+    gap: 16px;
+  }
+
+  .about-strengths {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .scroll-controls {
+    right: 12px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .header-container,
+  .hero-container,
+  .stats-container,
+  .services-container,
+  .projects-container,
+  .process-container,
+  .about-container,
+  .skills-container,
+  .gallery-container,
+  .testimonials-container,
+  .faq-container,
+  .contact-container,
+  .footer-container {
+    width: calc(100% - 28px);
+  }
+
+  section {
+    scroll-margin-top: 72px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .resume-button {
+    width: 40px;
+    padding: 0;
+  }
+
+  .resume-button span {
+    display: none;
+  }
+
+  .theme-toggle,
+  .mobile-menu-button,
+  .resume-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-container {
+    padding: 50px 0;
+  }
+
+  
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-primary-btn,
+  .hero-secondary-btn {
+    width: 100%;
+  }
+
+  .hero-visual {
+    min-height: 430px;
+  }
+
+  .code-card {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .code-area {
+    padding: 16px;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .floating-badge {
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+
+  .stats-container,
+  .services-grid,
+  .projects-grid,
+  .process-timeline,
+  .skills-grid,
+  .gallery-grid,
+  .testimonials-grid,
+  .contact-methods,
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card:last-child,
+  .testimonial-card:last-child {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .about-visual {
+    min-height: 460px;
+  }
+
+  .about-image-card {
+    width: min(82vw, 320px);
+    height: 390px;
+  }
+
+  .about-strengths {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-filter {
+    width: 100%;
+  }
+
+  .contact-form-card {
+    padding: 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .scroll-controls {
+    right: 8px;
+    width: 40px;
+  }
+
+  .scroll-control-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .scroll-control-line {
+    height: 60px;
+  }
+}
+
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 390px) {
+  .header-actions {
+    gap: 7px;
+  }
+
+ 
+
+  .gallery-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-badge {
+    display: none;
+  }
+
+  .about-image-card {
+    width: 280px;
+    height: 360px;
+  }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

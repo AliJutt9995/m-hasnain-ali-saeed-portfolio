@@ -1,0 +1,429 @@
+.gallery-section {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(139, 92, 246, 0.06),
+      transparent 27%
+    ),
+    #0b0f19;
+}
+
+.gallery-container {
+  width: min(1240px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.gallery-heading {
+  margin-bottom: 35px;
+}
+
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-bottom: 35px;
+}
+
+.gallery-filter {
+  min-height: 42px;
+
+  padding: 0 16px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: #9ca8ba;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.gallery-filter:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.gallery-filter.active {
+  color: #ffffff;
+
+  border-color: transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #7c3aed
+    );
+
+  box-shadow:
+    0 10px 28px rgba(79, 70, 229, 0.22);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.gallery-card {
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(99, 102, 241, 0.22);
+
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.24);
+}
+
+.gallery-image-wrap {
+  position: relative;
+  overflow: hidden;
+
+  height: 235px;
+}
+
+.gallery-image-wrap img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.45s ease,
+    filter 0.45s ease;
+}
+
+.gallery-card:hover .gallery-image-wrap img {
+  transform: scale(1.07);
+  filter: brightness(0.72);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  opacity: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(7, 11, 20, 0.7),
+      transparent
+    );
+
+  transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay a {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #7c3aed
+    );
+
+  text-decoration: none;
+
+  transform: translateY(12px) scale(0.9);
+
+  transition: transform 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay a {
+  transform: translateY(0) scale(1);
+}
+
+.gallery-category {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+
+  padding: 7px 10px;
+
+  border-radius: 999px;
+
+  background: rgba(11, 15, 25, 0.72);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: #dbe5f3;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  backdrop-filter: blur(10px);
+}
+
+.gallery-content {
+  padding: 20px;
+}
+
+.gallery-content h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 17px;
+}
+
+.gallery-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  margin: 13px 0px 10px 0px;
+}
+
+.gallery-tech span {
+  padding: 6px 9px;
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  color: #8f9bad;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   GALLERY PAGINATION
+========================================================= */
+
+.gallery-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 42px;
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.pagination-page,
+.pagination-arrow {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: var(--text-muted);
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.pagination-page:hover,
+.pagination-arrow:hover:not(:disabled) {
+  color: #fff;
+
+  border-color: rgba(99, 102, 241, 0.5);
+
+  background: rgba(99, 102, 241, 0.1);
+
+  transform: translateY(-2px);
+}
+
+.pagination-page.active {
+  color: #fff;
+
+  border-color: transparent;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+
+  box-shadow:
+    0 10px 28px rgba(79, 70, 229, 0.25);
+}
+
+.pagination-arrow:disabled {
+  opacity: 0.3;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================================
+   PROJECT CTA BUTTON
+========================================================= */
+
+.gallery-project-link {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 18px;
+
+  padding: 11px 16px;
+
+  border: 1px solid rgba(99, 102, 241, 0.28);
+  border-radius: 10px;
+
+  background: rgba(99, 102, 241, 0.08);
+
+  color: #c7d2fe;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.gallery-project-link:hover {
+  color: #ffffff;
+
+  border-color: transparent;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 26px rgba(79, 70, 229, 0.28);
+}
+
+.gallery-project-link svg {
+  transition: transform 0.25s ease;
+}
+
+.gallery-project-link:hover svg {
+  transform: translate(2px, -2px);
+}
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .gallery-pagination {
+    margin-top: 30px;
+
+    gap: 7px;
+  }
+
+  .pagination-pages {
+    gap: 6px;
+  }
+
+  .pagination-page,
+  .pagination-arrow {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 9px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .gallery-section {
+    padding: 75px 0;
+  }
+
+  .gallery-container {
+    width: calc(100% - 28px);
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-filters {
+    gap: 8px;
+  }
+
+  .gallery-filter {
+    flex: 1 1 auto;
+  }
+}

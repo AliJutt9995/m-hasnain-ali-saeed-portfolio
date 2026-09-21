@@ -1,0 +1,650 @@
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+  position: relative;
+  overflow: hidden;
+
+  padding: 80px 0 28px;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(34, 211, 238, 0.05),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 88% 75%,
+      rgba(139, 92, 246, 0.06),
+      transparent 28%
+    ),
+    #080c14;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================================
+   FOOTER CONTAINER
+========================================================= */
+
+.footer-container {
+  width: min(
+    1240px,
+    calc(100% - 40px)
+  );
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   FOOTER TOP
+
+   Brand = 28%
+   Navigation + Services = 40%
+   CTA = 24%
+
+   Gap = 4% + 4%
+
+   28 + 40 + 24 + 8 = 100%
+========================================================= */
+
+.footer-top {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  gap: 4%;
+
+  padding-bottom: 55px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.footer-brand {
+  width: 28%;
+
+  flex: 0 0 28%;
+}
+
+.footer-logo {
+  display: inline-block;
+
+  color: #ffffff;
+
+  font-size: 23px;
+  line-height: 30px;
+  font-weight: 800;
+
+  text-decoration: none;
+
+  letter-spacing: -0.5px;
+}
+
+.footer-logo span {
+  color: #5b7cff;
+}
+
+.footer-brand p {
+  max-width: 330px;
+
+  margin: 16px 0 0;
+
+  color: #7f8b9e;
+
+  font-size: 13px;
+  line-height: 23px;
+}
+
+
+/* =========================================================
+   SOCIAL ICONS
+========================================================= */
+
+.footer-socials {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 22px;
+}
+
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  color: #aeb9c8;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.footer-socials a:hover {
+  transform: translateY(-3px);
+
+  color: #67e8f9;
+
+  border-color: rgba(56, 189, 248, 0.18);
+
+  background: rgba(56, 189, 248, 0.06);
+}
+
+
+/* =========================================================
+   NAVIGATION + SERVICES MAIN WRAPPER
+========================================================= */
+
+.footer-list-main {
+  width: 40%;
+
+  flex: 0 0 40%;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  gap: 6%;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.footer-links-group:first-child {
+  width: 34%;
+
+  flex: 0 0 34%;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.footer-links-group:nth-child(2) {
+  width: 60%;
+
+  flex: 0 0 60%;
+}
+
+
+/* =========================================================
+   LINK GROUP COMMON STYLES
+========================================================= */
+
+.footer-links-group {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 11px;
+}
+
+.footer-links-group h3 {
+  margin: 0 0 7px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.footer-links-group a {
+  width: fit-content;
+
+  color: #7f8b9e;
+
+  font-size: 12px;
+  line-height: 20px;
+
+  text-decoration: none;
+
+  white-space: normal;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer-links-group a:hover {
+  color: #ffffff;
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.footer-cta {
+  width: 24%;
+
+  flex: 0 0 24%;
+
+  padding: 20px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.footer-cta > span {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: #4ade80;
+
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+}
+
+.footer-cta h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CTA BUTTON
+========================================================= */
+
+.footer-contact-btn {
+  min-height: 42px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 14px;
+
+  padding: 0 16px;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #7c3aed
+    );
+
+  color: #ffffff;
+
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.footer-contact-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px rgba(79, 70, 229, 0.24);
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
+.footer-bottom {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 24px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-bottom p {
+  margin: 0;
+
+  color: #667285;
+
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.footer-top-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #8f9bad;
+
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer-top-btn:hover {
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+   601px - 1025px
+
+   STILL ONE ROW
+========================================================= */
+
+@media (max-width: 1025px) and (min-width: 601px) {
+
+  .site-footer {
+    padding-top: 65px;
+  }
+
+  .footer-container {
+    width: calc(100% - 40px);
+  }
+
+
+  /* -------------------------
+     BRAND
+  ------------------------- */
+
+  .footer-brand {
+    width: 28%;
+
+    flex-basis: 28%;
+  }
+
+  .footer-brand p {
+    max-width: 240px;
+
+    font-size: 12px;
+    line-height: 21px;
+  }
+
+
+  /* -------------------------
+     NAV + SERVICES
+  ------------------------- */
+
+  .footer-list-main {
+    width: 38%;
+
+    flex-basis: 38%;
+
+    gap: 5%;
+  }
+
+  .footer-links-group:first-child {
+    width: 35%;
+
+    flex-basis: 35%;
+  }
+
+  .footer-links-group:nth-child(2) {
+    width: 60%;
+
+    flex-basis: 60%;
+  }
+
+  .footer-links-group h3 {
+    font-size: 13px;
+  }
+
+  .footer-links-group a {
+    font-size: 11px;
+    line-height: 19px;
+  }
+
+
+  /* -------------------------
+     CTA
+  ------------------------- */
+
+  .footer-cta {
+    width: 26%;
+
+    flex-basis: 26%;
+
+    padding: 16px;
+  }
+
+  .footer-cta > span {
+    font-size: 8px;
+
+    letter-spacing: 0.5px;
+  }
+
+  .footer-cta h3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .footer-contact-btn {
+    min-height: 38px;
+
+    padding: 0 11px;
+
+    font-size: 10px;
+  }
+
+
+  /* -------------------------
+     SOCIALS
+  ------------------------- */
+
+  .footer-socials a {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   600px AND BELOW
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .site-footer {
+    padding:
+      60px 0
+      24px;
+  }
+
+  .footer-container {
+    width: calc(100% - 28px);
+  }
+
+
+  /* -------------------------
+     STACK EVERYTHING
+  ------------------------- */
+
+  .footer-top {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 35px;
+
+    padding-bottom: 40px;
+  }
+
+
+  /* -------------------------
+     BRAND
+  ------------------------- */
+
+  .footer-brand {
+    width: 100%;
+
+    flex-basis: auto;
+
+    text-align: center;
+  }
+
+  .footer-brand p {
+    max-width: 340px;
+
+    margin:
+      16px auto
+      0;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+
+  /* -------------------------
+     NAV + SERVICES
+  ------------------------- */
+
+  .footer-list-main {
+    width: 100%;
+
+    flex-basis: auto;
+
+    display: flex;
+    flex-direction: row;
+
+    gap: 2%;
+  }
+
+  .footer-links-group:first-child {
+    width: 50%;
+
+    flex-basis: 50%;
+  }
+
+  .footer-links-group:nth-child(2) {
+    width: 50%;
+
+    flex-basis: 50%;
+  }
+
+
+  /* -------------------------
+     CTA
+  ------------------------- */
+
+  .footer-cta {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  /* -------------------------
+     FOOTER BOTTOM
+  ------------------------- */
+
+  .footer-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+  .footer-contact-btn {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .footer-list-main {
+    flex-direction: row;
+
+    gap: 20px;
+  }
+
+  .footer-links-group:first-child {
+    width: 50%;
+
+    flex-basis: 50%;
+  }
+
+  .footer-links-group:nth-child(2) {
+    width: 50%;
+
+    flex-basis: 50%;
+  }
+}

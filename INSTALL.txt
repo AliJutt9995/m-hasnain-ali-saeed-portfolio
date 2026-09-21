@@ -1,0 +1,17 @@
+Run these commands in your portfolio project root:
+
+npm install openai express express-rate-limit dotenv
+
+Then use TWO terminals while developing locally:
+
+Terminal 1 (frontend):
+npm run dev
+
+Terminal 2 (AI backend):
+node server.js
+
+Your included vite.config.js proxies /api requests from the frontend to http://localhost:3001.
+
+OPTIONAL: if you want one command later, install concurrently:
+npm install -D concurrently
+and update package.json scripts as described in SETUP.md.

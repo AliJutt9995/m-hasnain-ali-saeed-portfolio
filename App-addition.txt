@@ -1,0 +1,11 @@
+In src/App.jsx:
+
+1) Add this import with your other component imports:
+
+import PortfolioChatbot from "./components/PortfolioChatbot";
+
+2) Near the bottom, after ScrollControls, render it:
+
+<Footer />
+<ScrollControls />
+<PortfolioChatbot />

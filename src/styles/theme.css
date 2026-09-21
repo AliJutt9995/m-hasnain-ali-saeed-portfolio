@@ -1,0 +1,455 @@
+/* =========================================================
+   GLOBAL THEME — dark styles remain in component stylesheets
+========================================================= */
+.app {
+  background: #0b0f19;
+  color: #ffffff;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* =========================================================
+   LIGHT PALETTE AND SECTION RHYTHM
+========================================================= */
+.app.light {
+  --bg: #f7f9fc;
+  --bg-secondary: #ffffff;
+  --surface: rgba(15, 23, 42, 0.035);
+  --surface-strong: rgba(15, 23, 42, 0.06);
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-soft: #475569;
+  --border: rgba(15, 23, 42, 0.1);
+  --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app.light .hero-section,
+.app.light .stats-section,
+.app.light .projects-section,
+.app.light .about-section,
+.app.light .gallery-section,
+.app.light .faq-section {
+  background: #f7f9fc;
+}
+
+.app.light .services-section,
+.app.light .process-section,
+.app.light .skills-section,
+.app.light .testimonials-section,
+.app.light .contact-section {
+  background: #eef3f9;
+}
+
+/* =========================================================
+   TEXT AND HEADINGS
+========================================================= */
+.app.light h1,
+.app.light h2,
+.app.light h3,
+.app.light h4,
+.app.light h5,
+.app.light h6,
+.app.light .section-heading h2,
+.app.light .about-content h2,
+.app.light .contact-info h2 {
+  color: #0f172a;
+}
+
+.app.light p,
+.app.light .hero-description,
+.app.light .section-heading p,
+.app.light .about-description,
+.app.light .about-intro {
+  color: #475569;
+}
+
+.app.light .section-kicker {
+  color: #0369a1;
+}
+
+/* The hero's first line is a SPAN with its own white color in hero.css. */
+.app.light .hero-title-fixed {
+  color: #0f172a;
+}
+
+.app.light .hero-eyebrow {
+  color: #0369a1;
+  background: #e0f2fe;
+  border-color: #bae6fd;
+}
+
+.app.light .hero-secondary-btn {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.app.light .hero-secondary-btn:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+
+.app.light .hero-tech-list span,
+.app.light .project-tech span {
+  background: #eff6ff;
+  border-color: #dbeafe;
+  color: #334155;
+}
+
+.app.light .service-link,
+.app.light .project-detail-label {
+  color: #1d4ed8;
+}
+
+.app.light .project-detail strong {
+  color: #0f172a;
+}
+
+.app.light .project-details {
+  border-top-color: #dce4ef;
+  border-bottom-color: #dce4ef;
+}
+
+.app.light .project-actions a {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.app.light .project-actions a:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.app.light .site-header {
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid #dce4ef;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+.app.light .brand {
+  color: #0f172a;
+}
+
+.app.light .main-nav a {
+  color: #334155;
+}
+
+.app.light .main-nav a:hover,
+.app.light .main-nav a:focus-visible {
+  color: #2563eb;
+}
+
+.app.light .theme-toggle,
+.app.light .resume-button,
+.app.light .mobile-menu-button {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.app.light .theme-toggle:hover,
+.app.light .resume-button:hover,
+.app.light .mobile-menu-button:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+.app.light .stat-card,
+.app.light .service-card,
+.app.light .project-card,
+.app.light .process-step,
+.app.light .skill-card,
+.app.light .gallery-card,
+.app.light .testimonial-card,
+.app.light .faq-item,
+.app.light .contact-method,
+.app.light .contact-form-card,
+.app.light .footer-cta {
+  background: #ffffff;
+  border: 1px solid #dce4ef;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.07);
+}
+
+.app.light .service-card:hover,
+.app.light .project-card:hover,
+.app.light .process-step:hover,
+.app.light .skill-card:hover,
+.app.light .gallery-card:hover,
+.app.light .stat-card:hover,
+.app.light .contact-method:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 16px 38px rgba(37, 99, 235, 0.11);
+}
+
+.app.light .stat-card h3,
+.app.light .service-card h3,
+.app.light .project-card h3,
+.app.light .project-title-row h3,
+.app.light .process-step h3,
+.app.light .skill-card h3,
+.app.light .testimonial-card h3,
+.app.light .gallery-content h3,
+.app.light .faq-question,
+.app.light .contact-form-header h3 {
+  color: #0f172a;
+}
+
+.app.light .stat-card p,
+.app.light .service-card p,
+.app.light .project-content > p,
+.app.light .project-detail-work p,
+.app.light .process-step p,
+.app.light .skill-status,
+.app.light .testimonial-review,
+.app.light .faq-answer,
+.app.light .faq-answer p {
+  color: #475569;
+}
+
+/* Stats */
+.app.light .stat-card h3 {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.app.light .stat-card p {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.app.light .stat-icon,
+.app.light .skill-icon,
+.app.light .contact-method-icon {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
+}
+
+/* =========================================================
+   PORTFOLIO FILTERS, TECH BADGES AND PAGINATION
+========================================================= */
+.app.light .gallery-tech span {
+  background: #eff6ff;
+  border-color: #dbeafe;
+  color: #0f172a;
+}
+
+.app.light .gallery-filter {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.app.light .gallery-filter:hover:not(.active) {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.app.light .gallery-filter.active,
+.app.light .pagination-page.active {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.app.light .gallery-project-link {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.app.light .gallery-project-link:hover {
+  color: #ffffff;
+  border-color: transparent;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+.app.light .pagination-page,
+.app.light .pagination-arrow {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.app.light .pagination-page:hover:not(.active),
+.app.light .pagination-arrow:hover:not(:disabled) {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.app.light .pagination-page.active {
+  color: #ffffff;
+}
+
+/* =========================================================
+   FORMS AND CONTACT DETAILS
+========================================================= */
+.app.light .contact-method span {
+  color: #475569;
+}
+
+.app.light .contact-method strong {
+  color: #0f172a;
+}
+
+.app.light .contact-method a {
+  color: #1d4ed8;
+}
+
+.app.light .contact-form-card {
+  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.07);
+}
+
+.app.light .form-group label {
+  color: #334155;
+}
+
+.app.light .form-group input,
+.app.light .form-group select,
+.app.light .form-group textarea {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+}
+
+.app.light .form-group input::placeholder,
+.app.light .form-group textarea::placeholder {
+  color: #64748b;
+}
+
+.app.light .form-group input:focus,
+.app.light .form-group select:focus,
+.app.light .form-group textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.app.light .faq-question:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   DARK HERO CODE CARD AND LIGHT SCROLL CONTROLS
+========================================================= */
+.app.light .code-card {
+  background: #111827;
+}
+
+.app.light .code-area {
+  background: #070b14;
+}
+
+.app.light .scroll-controls {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #dce4ef;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.app.light .scroll-button {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #ffffff;
+  box-shadow: 0 5px 14px rgba(79, 70, 229, 0.2);
+}
+
+.app.light .scroll-button:hover {
+  box-shadow: 0 8px 22px rgba(79, 70, 229, 0.3);
+}
+
+.app.light .scroll-track {
+  background: #dbe4f0;
+}
+
+.app.light .scroll-progress {
+  background: linear-gradient(180deg, #22d3ee, #3b82f6, #8b5cf6);
+}
+
+/* =========================================================
+   FOOTER — existing widths and responsive layout stay in footer.css
+========================================================= */
+.app.light .site-footer {
+  background: #e8eef7;
+  border-top: 1px solid #d5dfeb;
+}
+
+.app.light .footer-logo,
+.app.light .footer-links-group h3,
+.app.light .footer-cta h3 {
+  color: #0f172a;
+}
+
+.app.light .footer-logo span {
+  color: #4f46e5;
+}
+
+.app.light .footer-brand p,
+.app.light .footer-links-group a,
+.app.light .footer-bottom p {
+  color: #475569;
+}
+
+.app.light .footer-links-group a:hover,
+.app.light .footer-top-btn:hover {
+  color: #2563eb;
+}
+
+.app.light .footer-socials a {
+  background: #ffffff;
+  border-color: #d5dfeb;
+  color: #334155;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.app.light .footer-socials a:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #2563eb;
+}
+
+.app.light .footer-cta {
+  border-color: #d5dfeb;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.app.light .footer-cta > span {
+  color: #15803d;
+}
+
+.app.light .footer-contact-btn {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #ffffff;
+}
+
+.app.light .footer-bottom {
+  border-top-color: #cbd5e1;
+}
+
+.app.light .footer-top-btn {
+  color: #334155;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+@media (max-width: 900px) {
+  .app.light .main-nav {
+    background: #ffffff;
+    border-color: #dce4ef;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
+}

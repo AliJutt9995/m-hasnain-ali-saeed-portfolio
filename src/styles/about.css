@@ -1,0 +1,915 @@
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+
+.about-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 95px 0 110px;
+
+  background:
+    radial-gradient(
+      circle at 18% 45%,
+      rgba(34, 211, 238, 0.06),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(139, 92, 246, 0.07),
+      transparent 30%
+    ),
+    #0b0f19;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.about-container {
+  width: min(1320px, calc(100% - 48px));
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+
+  align-items: center;
+
+  gap: 70px;
+}
+
+
+/* =========================================================
+   LEFT VISUAL
+========================================================= */
+
+.about-visual {
+  position: relative;
+
+  min-height: 600px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   IMAGE CARD
+========================================================= */
+
+.about-image-card {
+  position: relative;
+
+  z-index: 4;
+
+  width: min(100%, 420px);
+
+  aspect-ratio: 0.82;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.42),
+    0 0 55px rgba(99, 102, 241, 0.13);
+}
+
+
+.about-image-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -1px;
+
+  z-index: 2;
+
+  border-radius: inherit;
+
+  padding: 2px;
+
+  background: linear-gradient(
+    135deg,
+    #22d3ee,
+    #6366f1,
+    #8b5cf6
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+}
+
+
+.about-image-card img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center top;
+}
+
+
+/* =========================================================
+   ORBITS
+========================================================= */
+
+.about-orbit {
+  position: absolute;
+
+  z-index: 1;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.orbit-one {
+  width: 500px;
+  height: 500px;
+
+  border: 1px solid rgba(99, 102, 241, 0.13);
+}
+
+
+.orbit-two {
+  width: 415px;
+  height: 415px;
+
+  border: 1px solid rgba(34, 211, 238, 0.08);
+}
+
+
+/* =========================================================
+   GLOW
+========================================================= */
+
+.about-glow {
+  position: absolute;
+
+  width: 340px;
+  height: 340px;
+
+  border-radius: 50%;
+
+  background: rgba(99, 102, 241, 0.14);
+
+  filter: blur(85px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   EXPERIENCE BADGE
+========================================================= */
+
+.experience-badge {
+  position: absolute;
+
+  z-index: 7;
+
+  left: 4%;
+  bottom: 85px;
+
+  min-width: 125px;
+
+  padding: 15px 18px;
+
+  border-radius: 15px;
+
+  background: rgba(23, 32, 50, 0.94);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.3);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+
+.experience-badge strong {
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 25px;
+  line-height: 1;
+}
+
+
+.experience-badge span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   AVAILABLE BADGE
+========================================================= */
+
+.available-badge {
+  position: absolute;
+
+  z-index: 7;
+
+  top: 85px;
+  right: 4%;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 10px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(23, 32, 50, 0.94);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: #cbd5e1;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+
+.available-badge i {
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #4ade80;
+
+  box-shadow:
+    0 0 12px rgba(74, 222, 128, 0.7);
+}
+
+
+/* =========================================================
+   DECORATIVE DOTS
+========================================================= */
+
+.about-decoration {
+  position: absolute;
+
+  z-index: 2;
+
+  border-radius: 50%;
+}
+
+
+.decoration-one {
+  width: 9px;
+  height: 9px;
+
+  left: 35px;
+  top: 145px;
+
+  background: #22d3ee;
+}
+
+
+.decoration-two {
+  width: 7px;
+  height: 7px;
+
+  right: 50px;
+  bottom: 140px;
+
+  background: #8b5cf6;
+}
+
+
+/* =========================================================
+   RIGHT CONTENT
+========================================================= */
+
+.about-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+
+  max-width: 720px;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.about-content h2 {
+  max-width: 700px;
+
+  margin: 10px 0 0;
+
+  color: #ffffff;
+
+}
+
+
+.about-content h2 span {
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #818cf8,
+    #a855f7
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+/* =========================================================
+   INTRO TEXT
+========================================================= */
+
+.about-intro {
+  max-width: 680px;
+
+  margin: 22px 0 0;
+
+  color: #d4dbe7;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.about-description {
+  max-width: 680px;
+
+  margin: 14px 0 0;
+
+  color: #8f9bad;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   HIGHLIGHT CARDS
+========================================================= */
+
+.about-highlight {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 11px;
+
+  margin-top: 20px;
+
+  padding: 17px 19px;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(99, 102, 241, 0.17);
+
+  background: rgba(99, 102, 241, 0.055);
+
+  color: #9ba8bb;
+}
+
+
+.about-highlight > svg {
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  color: #818cf8;
+}
+
+
+.about-highlight p {
+  margin: 0;
+
+  color: #9ba8bb;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   THEMEFOREST LINK
+========================================================= */
+
+.about-themeforest-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-left: 4px;
+
+  color: #67e8f9;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.about-themeforest-link:hover {
+  color: #a78bfa;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   STRENGTHS GRID
+========================================================= */
+
+.about-strengths {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   STRENGTH CARD
+========================================================= */
+
+.strength-item {
+  min-height: 82px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 15px 16px;
+
+  border-radius: 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.035);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.strength-item:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(56, 189, 248, 0.2);
+
+  background: rgba(56, 189, 248, 0.045);
+}
+
+
+/* =========================================================
+   STRENGTH ICON
+========================================================= */
+
+.strength-icon {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 10px;
+
+  background: rgba(34, 211, 238, 0.08);
+
+  color: #22d3ee;
+}
+
+
+.strength-item h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.strength-item p {
+  margin: 4px 0 0;
+
+  color: #7f8da2;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESUME BUTTON
+========================================================= */
+
+.about-resume-btn {
+  min-height: 48px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 20px;
+
+  padding: 0 21px;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 12px 30px rgba(79, 70, 229, 0.23);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.about-resume-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 17px 38px rgba(79, 70, 229, 0.33);
+}
+
+
+/* =========================================================
+   LARGE TABLETS / SMALL DESKTOP
+========================================================= */
+
+@media (max-width: 1180px) {
+
+  .about-container {
+    width: min(1120px, calc(100% - 40px));
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 50px;
+  }
+
+
+  .about-image-card {
+    width: min(100%, 370px);
+  }
+
+
+  .orbit-one {
+    width: 440px;
+    height: 440px;
+  }
+
+
+  .orbit-two {
+    width: 365px;
+    height: 365px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .about-section {
+    padding: 80px 0;
+  }
+
+
+  .about-container {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+
+  .about-visual {
+    width: min(100%, 620px);
+
+    min-height: 540px;
+
+    margin: 0 auto;
+  }
+
+
+  .about-image-card {
+    width: min(100%, 380px);
+  }
+
+
+  .about-content {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    text-align: center;
+  }
+
+
+  .about-content h2,
+  .about-intro,
+  .about-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .about-highlight {
+    text-align: left;
+  }
+
+
+  .about-strengths {
+    text-align: left;
+  }
+
+
+  .about-resume-btn {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .about-section {
+    padding: 65px 0;
+  }
+
+
+  .about-container {
+    width: min(100% - 28px, 1240px);
+
+    gap: 35px;
+  }
+
+
+  .about-visual {
+    min-height: 440px;
+  }
+
+
+  .about-image-card {
+    width: min(100%, 300px);
+
+    border-radius: 22px;
+  }
+
+
+  .orbit-one {
+    width: 350px;
+    height: 350px;
+  }
+
+
+  .orbit-two {
+    width: 290px;
+    height: 290px;
+  }
+
+
+  .experience-badge {
+    left: 0;
+    bottom: 45px;
+
+    min-width: 105px;
+
+    padding: 12px 14px;
+  }
+
+
+  .experience-badge strong {
+    font-size: 21px;
+  }
+
+
+  .available-badge {
+    top: 50px;
+    right: 0;
+
+    font-size: 10px;
+
+    padding: 8px 11px;
+  }
+
+
+  .decoration-one {
+    left: 5px;
+  }
+
+
+  .decoration-two {
+    right: 10px;
+  }
+
+
+
+  .about-intro {
+    font-size: 15px;
+  }
+
+
+  .about-description {
+    font-size: 13px;
+  }
+
+
+  .about-highlight {
+    padding: 14px;
+
+    gap: 9px;
+  }
+
+
+  .about-highlight p {
+    font-size: 11px;
+  }
+
+
+  .about-strengths {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+
+  .strength-item {
+    min-height: 76px;
+  }
+
+
+  .about-resume-btn {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 390px) {
+
+  .about-container {
+    width: min(100% - 22px, 1240px);
+  }
+
+
+  .about-visual {
+    min-height: 405px;
+  }
+
+
+  .about-image-card {
+    width: min(100%, 270px);
+  }
+
+
+  .orbit-one {
+    width: 310px;
+    height: 310px;
+  }
+
+
+  .orbit-two {
+    width: 260px;
+    height: 260px;
+  }
+
+
+  .experience-badge {
+    bottom: 38px;
+  }
+
+
+  .about-intro {
+    font-size: 14px;
+  }
+
+
+  .about-description {
+    font-size: 12px;
+  }
+
+
+  .strength-item {
+    padding: 13px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .strength-item,
+  .about-themeforest-link,
+  .about-resume-btn {
+    transition: none;
+  }
+
+
+  .strength-item:hover,
+  .about-themeforest-link:hover,
+  .about-resume-btn:hover {
+    transform: none;
+  }
+}

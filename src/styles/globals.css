@@ -1,0 +1,588 @@
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+
+  background: var(--bg);
+  color: var(--text);
+
+  overflow-x: hidden;
+
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   GLOBAL TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  font-family:
+    "Sora",
+    "Inter",
+    system-ui,
+    sans-serif;
+
+  color: var(--text);
+
+  text-wrap: balance;
+}
+
+
+/* =========================================================
+   H1
+========================================================= */
+
+h1 {
+  font-size: 68px;
+
+  line-height: 76px;
+
+  font-weight: 700;
+
+  letter-spacing: -3px;
+}
+
+
+/* =========================================================
+   H2
+========================================================= */
+
+h2 {
+  font-size: 54px;
+
+  line-height: 60px;
+
+  font-weight: 700;
+
+  letter-spacing: -2px;
+}
+
+
+/* =========================================================
+   H3
+========================================================= */
+
+h3 {
+  font-size: 32px;
+
+  line-height: 38px;
+
+  font-weight: 600;
+
+  letter-spacing: -1px;
+}
+
+
+/* =========================================================
+   H4
+========================================================= */
+
+h4 {
+  font-size: 24px;
+
+  line-height: 31px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   H5
+========================================================= */
+
+h5 {
+  font-size: 17px;
+
+  line-height: 24px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.2px;
+}
+
+
+/* =========================================================
+   H6
+========================================================= */
+
+h6 {
+  font-size: 15px;
+
+  line-height: 21px;
+
+  font-weight: 600;
+
+  letter-spacing: 0;
+}
+
+
+/* =========================================================
+   PARAGRAPHS
+========================================================= */
+
+p {
+  margin: 0;
+
+  font-family:
+    "Inter",
+    system-ui,
+    sans-serif;
+
+  font-size: 16px;
+
+  line-height: 28px;
+
+  font-weight: 400;
+
+  color: var(--text-muted);
+
+  text-wrap: pretty;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+
+  font-family:
+    "Inter",
+    system-ui,
+    sans-serif;
+
+  font-size: 16px;
+
+  line-height: 24px;
+
+  font-weight: 500;
+
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button {
+  font-family:
+    "Inter",
+    system-ui,
+    sans-serif;
+
+  font-size: 15px;
+
+  line-height: 15px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.2px;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+input,
+textarea,
+select {
+  font-family:
+    "Inter",
+    system-ui,
+    sans-serif;
+
+  font-size: 15px;
+
+  line-height: 23px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+label {
+  font-family:
+    "Inter",
+    system-ui,
+    sans-serif;
+
+  font-size: 14px;
+
+  line-height: 20px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   SMALL TEXT
+========================================================= */
+
+small {
+  font-family:
+    "Inter",
+    system-ui,
+    sans-serif;
+
+  font-size: 13px;
+
+  line-height: 20px;
+
+  font-weight: 400;
+
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   STRONG / BOLD
+========================================================= */
+
+strong,
+b {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   CODE / TECH TEXT
+========================================================= */
+
+code,
+pre,
+kbd,
+samp {
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    Consolas,
+    monospace;
+
+  font-size: 14px;
+  line-height: 22px;
+}
+
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+ul,
+ol {
+  padding-left: 20px;
+}
+
+li {
+  font-size: 16px;
+
+  line-height: 27px;
+}
+
+
+/* =========================================================
+   IMAGES
+========================================================= */
+
+img {
+  max-width: 100%;
+
+  display: block;
+}
+
+
+/* =========================================================
+   GLOBAL INTERACTIONS
+========================================================= */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section {
+  scroll-margin-top: 85px;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app {
+  min-height: 100vh;
+
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+  width: min(
+    var(--container),
+    calc(100% - 40px)
+  );
+
+  margin-inline: auto;
+}
+
+
+/* =========================================================
+   TABLET TYPOGRAPHY
+========================================================= */
+
+@media (max-width: 768px) {
+
+  body {
+    font-size: 15px;
+
+    line-height: 24px;
+  }
+
+  h1 {
+    font-size: 54px;
+
+    line-height: 58px;
+
+    letter-spacing: -2px;
+  }
+
+  h2 {
+    font-size: 43px;
+
+    line-height: 48px;
+
+    letter-spacing: -1.5px;
+  }
+
+  h3 {
+    font-size: 29px;
+
+    line-height: 35px;
+
+    letter-spacing: -0.8px;
+  }
+
+  h4 {
+    font-size: 19px;
+
+    line-height: 26px;
+  }
+
+  h5 {
+    font-size: 16px;
+
+    line-height: 23px;
+  }
+
+  h6 {
+    font-size: 14px;
+
+    line-height: 20px;
+  }
+
+  p {
+    font-size: 15px;
+
+    line-height: 26px;
+  }
+
+  a {
+    font-size: 15px;
+
+    line-height: 23px;
+  }
+
+  button {
+    font-size: 14px;
+
+    line-height: 14px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 14px;
+
+    line-height: 22px;
+  }
+
+  label {
+    font-size: 13px;
+
+    line-height: 19px;
+  }
+
+  small {
+    font-size: 12px;
+
+    line-height: 18px;
+  }
+
+  li {
+    font-size: 15px;
+
+    line-height: 25px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE TYPOGRAPHY
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  h1 {
+    font-size: 32px;
+
+    line-height: 40px;
+
+    letter-spacing: -1.5px;
+  }
+
+  h2 {
+    font-size: 30px;
+
+    line-height: 36px;
+
+    letter-spacing: -1.2px;
+  }
+
+  h3 {
+    font-size: 22px;
+
+    line-height: 28px;
+
+    letter-spacing: -0.5px;
+  }
+
+  h4 {
+    font-size: 18px;
+
+    line-height: 24px;
+  }
+
+  h5 {
+    font-size: 15px;
+
+    line-height: 22px;
+  }
+
+  h6 {
+    font-size: 13px;
+
+    line-height: 19px;
+  }
+
+  p {
+    font-size: 15px;
+
+    line-height: 25px;
+  }
+
+  a {
+    font-size: 15px;
+
+    line-height: 22px;
+  }
+
+  button {
+    font-size: 14px;
+
+    line-height: 14px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 14px;
+
+    line-height: 21px;
+  }
+
+  label {
+    font-size: 13px;
+
+    line-height: 18px;
+  }
+
+  small {
+    font-size: 12px;
+
+    line-height: 18px;
+  }
+
+  li {
+    font-size: 15px;
+
+    line-height: 25px;
+  }
+}
