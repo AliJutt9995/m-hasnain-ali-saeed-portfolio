@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "dotenv/config";import path from "node:path";
 
 import express from "express";
 import rateLimit from "express-rate-limit";
@@ -482,7 +482,8 @@ app.post(
 /* =========================================================
    START SERVER
 ========================================================= */
-
+// Serve the built React portfolio in production
+app.use(express.static(path.join(process.cwd(), "dist")));
 app.listen(port, () => {
   console.log(
     `Hussnain AI portfolio-only backend running on http://localhost:${port}`
