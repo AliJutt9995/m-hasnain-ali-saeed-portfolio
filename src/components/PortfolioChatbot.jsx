@@ -8,7 +8,6 @@ import {
   Mail,
   Sparkles,
 } from "lucide-react";
-import { Turnstile } from "@marsidev/react-turnstile";
 
 import "../styles/chatbot.css";
 
@@ -66,11 +65,6 @@ export default function PortfolioChatbot() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [chatError, setChatError] = useState("");
-
-  // Turnstile
-  const turnstileRef = useRef(null);
-  const [turnstileToken, setTurnstileToken] = useState("");
-  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
   const messagesEndRef = useRef(null);
 
@@ -135,16 +129,6 @@ export default function PortfolioChatbot() {
 
     if (!question || isTyping) return;
 
-    // Get a fresh Turnstile token before sending.
-    const token = turnstileRef.current?.getResponse();
-
-    if (!token) {
-      setChatError(
-        "Please complete the security check before sending your message."
-      );
-      return;
-    }
-
     const userMessage = {
       role: "user",
       content: question,
@@ -165,7 +149,6 @@ export default function PortfolioChatbot() {
         },
         body: JSON.stringify({
           email,
-          turnstileToken: token,
           messages: nextMessages.slice(-8).map((message) => ({
             role: message.role,
             content: message.content,
@@ -196,9 +179,6 @@ export default function PortfolioChatbot() {
     } finally {
       setIsTyping(false);
 
-      // A Turnstile token can be verified only once.
-      setTurnstileToken("");
-      turnstileRef.current?.reset();
     }
   };
 
@@ -358,39 +338,11 @@ export default function PortfolioChatbot() {
                     key={question}
                     type="button"
                     onClick={() => sendMessage(question)}
-                    disabled={isTyping || !turnstileToken}
+                    disabled={isTyping}
                   >
                     {question}
                   </button>
                 ))}
-              </div>
-
-              {/* Turnstile verification */}
-              <div className="chatbot-security-check">
-                {turnstileSiteKey ? (
-                  <Turnstile
-                    ref={turnstileRef}
-                    siteKey={turnstileSiteKey}
-                    options={{ size: "compact" }}
-                    onSuccess={(token) => {
-                      setTurnstileToken(token);
-                      setChatError("");
-                    }}
-                    onExpire={() => {
-                      setTurnstileToken("");
-                    }}
-                    onError={() => {
-                      setTurnstileToken("");
-                      setChatError(
-                        "Security check failed. Please refresh and try again."
-                      );
-                    }}
-                  />
-                ) : (
-                  <small>
-                    Security check is not configured.
-                  </small>
-                )}
               </div>
 
               <div className="chatbot-input-area">
@@ -409,9 +361,7 @@ export default function PortfolioChatbot() {
                   type="button"
                   onClick={() => sendMessage()}
                   aria-label="Send message"
-                  disabled={
-                    isTyping || !input.trim() || !turnstileToken
-                  }
+                  disabled={isTyping || !input.trim()}
                 >
                   <Send size={17} />
                 </button>

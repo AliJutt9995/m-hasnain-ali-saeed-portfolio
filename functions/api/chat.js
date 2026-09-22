@@ -165,49 +165,10 @@ export async function onRequestPost(context) {
       return json({ error: "A question is required." }, 400);
     }
 
-    // Verify Turnstile before making any OpenAI request.
-const turnstileToken = body?.turnstileToken;
-
-if (!context.env.TURNSTILE_SECRET_KEY) {
-  return json({ error: "Chat verification is not configured." }, 503);
-}
-
-if (
-  typeof turnstileToken !== "string" ||
-  !turnstileToken ||
-  turnstileToken.length > 2048
-) {
-  return json({ error: "Please complete the security check." }, 403);
-}
-
-const verifyResponse = await fetch(
-  "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      secret: context.env.TURNSTILE_SECRET_KEY,
-      response: turnstileToken,
-    }),
-  }
-);
-
-if (!verifyResponse.ok) {
-  return json({ error: "Security verification is unavailable." }, 503);
-}
-
-const verification = await verifyResponse.json();
-
-if (
-  !verification.success ||
-  verification.hostname !== "m-hasnain-ali-saeed-portfolio.pages.dev"
-) {
-  return json({ error: "Security check failed. Please try again." }, 403);
-}
-
     if (isBlocked(latest.content)) {
-      return json({ reply: BLOCKED });
-    }
+  return json({ reply: BLOCKED });
+}
+
 
     const relevant = await isPortfolioQuestion(apiKey, latest.content);
 
