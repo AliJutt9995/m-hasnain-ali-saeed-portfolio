@@ -57,7 +57,7 @@ function App() {
 
       <Footer />
       <ScrollControls />
-     {/* <PortfolioChatbot /> */}
+      <PortfolioChatbot />
     </div>
   );
 }

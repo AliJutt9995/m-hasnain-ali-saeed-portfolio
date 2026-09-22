@@ -1,5 +1,5 @@
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Bot,
   X,
@@ -8,6 +8,7 @@ import {
   Mail,
   Sparkles,
 } from "lucide-react";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 import "../styles/chatbot.css";
 
@@ -66,16 +67,12 @@ export default function PortfolioChatbot() {
   const [isTyping, setIsTyping] = useState(false);
   const [chatError, setChatError] = useState("");
 
-  const messagesEndRef = useRef(null);
+  // Turnstile
+  const turnstileRef = useRef(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
-  const apiMessages = useMemo(
-    () =>
-      messages.map((message) => ({
-        role: message.role,
-        content: message.content,
-      })),
-    [messages]
-  );
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
     sessionStorage.setItem(
@@ -127,9 +124,7 @@ export default function PortfolioChatbot() {
       setHasAccess(true);
     } catch (error) {
       console.error(error);
-      setEmailError(
-        "Unable to start the chat. Please try again."
-      );
+      setEmailError("Unable to start the chat. Please try again.");
     } finally {
       setIsSubmittingEmail(false);
     }
@@ -139,6 +134,16 @@ export default function PortfolioChatbot() {
     const question = (questionOverride ?? input).trim();
 
     if (!question || isTyping) return;
+
+    // Get a fresh Turnstile token before sending.
+    const token = turnstileRef.current?.getResponse();
+
+    if (!token) {
+      setChatError(
+        "Please complete the security check before sending your message."
+      );
+      return;
+    }
 
     const userMessage = {
       role: "user",
@@ -160,7 +165,8 @@ export default function PortfolioChatbot() {
         },
         body: JSON.stringify({
           email,
-          messages: nextMessages.map((message) => ({
+          turnstileToken: token,
+          messages: nextMessages.slice(-8).map((message) => ({
             role: message.role,
             content: message.content,
           })),
@@ -170,9 +176,7 @@ export default function PortfolioChatbot() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          data.error || "Chat request failed"
-        );
+        throw new Error(data.error || "Chat request failed");
       }
 
       setMessages((current) => [
@@ -191,6 +195,10 @@ export default function PortfolioChatbot() {
       );
     } finally {
       setIsTyping(false);
+
+      // A Turnstile token can be verified only once.
+      setTurnstileToken("");
+      turnstileRef.current?.reset();
     }
   };
 
@@ -207,9 +215,7 @@ export default function PortfolioChatbot() {
         className="chatbot-launcher"
         onClick={() => setIsOpen((current) => !current)}
         aria-label={
-          isOpen
-            ? `Close ${CHATBOT_NAME}`
-            : `Open ${CHATBOT_NAME}`
+          isOpen ? `Close ${CHATBOT_NAME}` : `Open ${CHATBOT_NAME}`
         }
       >
         {isOpen ? (
@@ -218,9 +224,7 @@ export default function PortfolioChatbot() {
           <MessageCircle size={23} />
         )}
 
-        {!isOpen && (
-          <span className="chatbot-launcher-dot" />
-        )}
+        {!isOpen && <span className="chatbot-launcher-dot" />}
       </button>
 
       {isOpen && (
@@ -259,9 +263,9 @@ export default function PortfolioChatbot() {
               <h4>Chat with {CHATBOT_NAME}</h4>
 
               <p>
-                Enter your email first, then ask anything
-                about {OWNER_NAME}'s work, skills, services,
-                projects, or experience.
+                Enter your email first, then ask anything about{" "}
+                {OWNER_NAME}'s work, skills, services, projects,
+                or experience.
               </p>
 
               <form onSubmit={handleEmailSubmit}>
@@ -299,8 +303,8 @@ export default function PortfolioChatbot() {
               </form>
 
               <small>
-                Your email is sent to {OWNER_NAME} when
-                you start the assistant.
+                Your email is sent to {OWNER_NAME} when you
+                start the assistant.
               </small>
             </div>
           ) : (
@@ -310,9 +314,7 @@ export default function PortfolioChatbot() {
                   <div
                     key={`${message.role}-${index}`}
                     className={`chatbot-message ${
-                      message.role === "user"
-                        ? "user"
-                        : "bot"
+                      message.role === "user" ? "user" : "bot"
                     }`}
                   >
                     {message.role === "assistant" && (
@@ -355,19 +357,45 @@ export default function PortfolioChatbot() {
                   <button
                     key={question}
                     type="button"
-                    onClick={() =>
-                      sendMessage(question)
-                    }
-                    disabled={isTyping}
+                    onClick={() => sendMessage(question)}
+                    disabled={isTyping || !turnstileToken}
                   >
                     {question}
                   </button>
                 ))}
               </div>
 
+              {/* Turnstile verification */}
+              <div className="chatbot-security-check">
+                {turnstileSiteKey ? (
+                  <Turnstile
+                    ref={turnstileRef}
+                    siteKey={turnstileSiteKey}
+                    options={{ size: "compact" }}
+                    onSuccess={(token) => {
+                      setTurnstileToken(token);
+                      setChatError("");
+                    }}
+                    onExpire={() => {
+                      setTurnstileToken("");
+                    }}
+                    onError={() => {
+                      setTurnstileToken("");
+                      setChatError(
+                        "Security check failed. Please refresh and try again."
+                      );
+                    }}
+                  />
+                ) : (
+                  <small>
+                    Security check is not configured.
+                  </small>
+                )}
+              </div>
+
               <div className="chatbot-input-area">
                 <textarea
-                  rows="1"
+                  rows={1}
                   value={input}
                   onChange={(event) =>
                     setInput(event.target.value)
@@ -381,7 +409,9 @@ export default function PortfolioChatbot() {
                   type="button"
                   onClick={() => sendMessage()}
                   aria-label="Send message"
-                  disabled={isTyping || !input.trim()}
+                  disabled={
+                    isTyping || !input.trim() || !turnstileToken
+                  }
                 >
                   <Send size={17} />
                 </button>
