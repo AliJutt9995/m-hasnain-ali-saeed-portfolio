@@ -17,7 +17,7 @@ export default function Header({ theme, toggleTheme }) {
     <header className="site-header">
       <div className="header-container">
         <a href="#hero" className="brand">
-          M. Hasnain <span>  Ali Saeed</span>
+          M. Hasnain <span> Ali Saeed</span>
         </a>
 
         <nav className={`main-nav ${menuOpen ? "open" : ""}`}>
@@ -42,13 +42,13 @@ export default function Header({ theme, toggleTheme }) {
           </button>
 
           <a
-  href="/M.%20Hasnain%20Ali%20Saeed%20Resume.pdf"
-  className="resume-button"
-  download="M-Hasnain-Ali-Saeed-Resume.pdf"
->
-  <Download size={17} />
-  <span>Download Resume</span>
-</a>
+            href="/M.%20Hasnain%20Ali%20Saeed%20Resume.pdf"
+            className="resume-button"
+            download="M-Hasnain-Ali-Saeed-Resume.pdf"
+          >
+            <Download size={17} />
+            <span>Download Resume</span>
+          </a>
 
           <button
             className="mobile-menu-button"

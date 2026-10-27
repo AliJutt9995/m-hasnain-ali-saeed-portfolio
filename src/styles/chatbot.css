@@ -1142,3 +1142,14 @@
     height: 450px !important;
   }
 }
+
+
+.chatbot-security-check {
+  display: flex;
+  justify-content: center;
+  padding: 8px 12px;
+}
+
+.chatbot-security-check.is-verified {
+  display: none;
+}

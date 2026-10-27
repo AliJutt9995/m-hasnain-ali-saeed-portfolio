@@ -104,7 +104,7 @@ export default function Hero() {
           <div className="hero-orbit"></div>
 
           <div className="floating-badge badge-react">
-            ⚛ React
+            ⚛️ React
           </div>
 
           <div className="floating-badge badge-js">
