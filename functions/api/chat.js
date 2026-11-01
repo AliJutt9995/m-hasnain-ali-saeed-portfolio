@@ -240,15 +240,21 @@ export async function onRequestPost(context) {
         );
       }
 
-      if (openaiResponse.status === 429) {
-        return json(
-          {
-            error:
-              "Hasnain AI is currently busy. Please try again shortly.",
-          },
-          429
-        );
-      }
+     if (openaiResponse.status === 429) {
+  return json(
+    {
+      error: "OpenAI 429",
+      code:
+        data?.error?.code ||
+        data?.error?.type ||
+        "unknown_429",
+      message:
+        data?.error?.message ||
+        "No detailed OpenAI error message returned.",
+    },
+    429
+  );
+}
 
       return json(
         {
