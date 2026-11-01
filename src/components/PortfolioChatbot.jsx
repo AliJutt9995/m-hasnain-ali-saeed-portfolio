@@ -333,17 +333,38 @@ export default function PortfolioChatbot() {
               </div>
 
               <div className="chatbot-quick-questions">
-                {quickQuestions.map((question) => (
-                  <button
-                    key={question}
-                    type="button"
-                    onClick={() => sendMessage(question)}
-                    disabled={isTyping}
-                  >
-                    {question}
-                  </button>
-                ))}
-              </div>
+  <div className="chatbot-quick-track">
+    <div className="chatbot-quick-group">
+      {quickQuestions.map((question, index) => (
+        <button
+          key={"first-" + index}
+          type="button"
+          onClick={() => sendMessage(question)}
+          disabled={isTyping}
+        >
+          {question}
+        </button>
+      ))}
+    </div>
+
+    <div
+      className="chatbot-quick-group"
+      aria-hidden="true"
+    >
+      {quickQuestions.map((question, index) => (
+        <button
+          key={"second-" + index}
+          type="button"
+          onClick={() => sendMessage(question)}
+          disabled={isTyping}
+          tabIndex={-1}
+        >
+          {question}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
 
               <div className="chatbot-input-area">
                 <textarea
