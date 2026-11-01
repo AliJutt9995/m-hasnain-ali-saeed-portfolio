@@ -1,14 +1,17 @@
-export function onRequestGet(context) {
-  return Response.json(
-    {
+export async function onRequestGet(context) {
+  const openaiSecretAvailable = Boolean(
+    context.env.OPENAI_API_KEY
+  );
+
+  return new Response(
+    JSON.stringify({
       ok: true,
-      openaiSecretAvailable: Boolean(context.env?.OPENAI_API_KEY),
-      turnstileSecretAvailable: Boolean(
-        context.env?.TURNSTILE_SECRET_KEY
-      ),
-    },
+      openaiSecretAvailable,
+    }),
     {
+      status: 200,
       headers: {
+        "Content-Type": "application/json; charset=UTF-8",
         "Cache-Control": "no-store",
       },
     }
