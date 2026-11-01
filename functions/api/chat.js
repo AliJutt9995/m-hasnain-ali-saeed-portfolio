@@ -1,7 +1,8 @@
 import { portfolioKnowledge } from "../../server/portfolioKnowledge.js";
 
-const OPENAI_URL = "https://api.openai.com/v1/responses";
-const MODEL = "gpt-5.6-luna";
+const MODEL = "gemini-3.5-flash-lite";
+const GEMINI_URL =
+  `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
 const OUT_OF_SCOPE =
   "I’m Hasnain AI, the portfolio assistant for M. Hasnain Ali Saeed. I can only answer questions about Hasnain’s professional profile, skills, services, projects, experience, ThemeForest work, availability, and contact information.";
@@ -22,7 +23,7 @@ function json(data, status = 200) {
 function isValidEmail(email) {
   return (
     typeof email === "string" &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+    /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.trim())
   );
 }
 
@@ -48,7 +49,7 @@ function sanitizeMessages(messages) {
 function isBlocked(message = "") {
   const text = String(message)
     .toLowerCase()
-    .replace(/\s+/g, " ")
+    .replace(/\\s+/g, " ")
     .trim();
 
   const blockedPatterns = [
@@ -71,7 +72,7 @@ function isBlocked(message = "") {
     /internal prompt/,
     /api key/,
     /secret key/,
-    /\.env/,
+    /\\.env/,
     /environment variable/,
     /ignore previous instructions/,
     /ignore your instructions/,
@@ -81,25 +82,23 @@ function isBlocked(message = "") {
   return blockedPatterns.some((pattern) => pattern.test(text));
 }
 
-function extractOutputText(data) {
-  if (!data || !Array.isArray(data.output)) return "";
+function toGeminiContents(messages) {
+  return messages.map((message) => ({
+    role: message.role === "assistant" ? "model" : "user",
+    parts: [{ text: message.content }],
+  }));
+}
 
-  const parts = [];
+function extractGeminiText(data) {
+  const parts = data?.candidates?.[0]?.content?.parts;
 
-  for (const item of data.output) {
-    if (!Array.isArray(item?.content)) continue;
+  if (!Array.isArray(parts)) return "";
 
-    for (const content of item.content) {
-      if (
-        content?.type === "output_text" &&
-        typeof content.text === "string"
-      ) {
-        parts.push(content.text);
-      }
-    }
-  }
-
-  return parts.join("\n").trim();
+  return parts
+    .map((part) => (typeof part?.text === "string" ? part.text : ""))
+    .filter(Boolean)
+    .join("\n")
+    .trim();
 }
 
 const SYSTEM_INSTRUCTIONS = `
@@ -143,12 +142,9 @@ ${portfolioKnowledge}
 
 export async function onRequestPost(context) {
   try {
-    if (!context.env.OPENAI_API_KEY) {
+    if (!context.env.GEMINI_API_KEY) {
       return json(
-        {
-          error:
-            "The AI service is not configured yet.",
-        },
+        { error: "The Gemini AI service is not configured yet." },
         503
       );
     }
@@ -158,34 +154,19 @@ export async function onRequestPost(context) {
     try {
       body = await context.request.json();
     } catch {
-      return json(
-        {
-          error: "Invalid JSON request.",
-        },
-        400
-      );
+      return json({ error: "Invalid JSON request." }, 400);
     }
 
     const { email, messages } = body ?? {};
 
     if (!isValidEmail(email)) {
-      return json(
-        {
-          error: "A valid email address is required.",
-        },
-        400
-      );
+      return json({ error: "A valid email address is required." }, 400);
     }
 
     const safeMessages = sanitizeMessages(messages);
 
     if (!safeMessages.length) {
-      return json(
-        {
-          error: "At least one chat message is required.",
-        },
-        400
-      );
+      return json({ error: "At least one chat message is required." }, 400);
     }
 
     const latestUserMessage = [...safeMessages]
@@ -193,95 +174,59 @@ export async function onRequestPost(context) {
       .find((message) => message.role === "user");
 
     if (!latestUserMessage) {
-      return json(
-        {
-          error: "A user message is required.",
-        },
-        400
-      );
+      return json({ error: "A user message is required." }, 400);
     }
 
     if (isBlocked(latestUserMessage.content)) {
-      return json({
-        reply: BLOCKED,
-      });
+      return json({ reply: BLOCKED });
     }
 
-    const openaiResponse = await fetch(OPENAI_URL, {
+    const geminiResponse = await fetch(GEMINI_URL, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${context.env.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
+        "x-goog-api-key": context.env.GEMINI_API_KEY,
       },
       body: JSON.stringify({
-        model: MODEL,
-        instructions: SYSTEM_INSTRUCTIONS,
-        input: safeMessages,
-        max_output_tokens: 400,
+        systemInstruction: {
+          parts: [{ text: SYSTEM_INSTRUCTIONS }],
+        },
+        contents: toGeminiContents(safeMessages),
+        generationConfig: {
+          temperature: 0.35,
+          maxOutputTokens: 400,
+        },
       }),
     });
 
-    const data = await openaiResponse.json();
+    const data = await geminiResponse.json();
 
-    if (!openaiResponse.ok) {
-      console.error(
-        "OpenAI API error:",
-        openaiResponse.status,
-        data
-      );
-
-      if (openaiResponse.status === 401) {
-        return json(
-          {
-            error:
-              "The AI service is not configured correctly.",
-          },
-          500
-        );
-      }
-
-     if (openaiResponse.status === 429) {
-  return json(
-    {
-      error: "OpenAI 429",
-      code:
-        data?.error?.code ||
-        data?.error?.type ||
-        "unknown_429",
-      message:
-        data?.error?.message ||
-        "No detailed OpenAI error message returned.",
-    },
-    429
-  );
-}
+    if (!geminiResponse.ok) {
+      console.error("Gemini API error:", geminiResponse.status, data);
 
       return json(
         {
-          error:
-            "Hasnain AI is temporarily unavailable. Please try again.",
+          error: "Gemini API request failed.",
+          code:
+            data?.error?.status ||
+            `HTTP_${geminiResponse.status}`,
+          message:
+            data?.error?.message ||
+            "No detailed Gemini error message returned.",
         },
-        502
+        geminiResponse.status
       );
     }
 
-    const reply = extractOutputText(data);
+    const reply = extractGeminiText(data);
 
     if (!reply) {
-      return json(
-        {
-          error:
-            "The AI returned an empty response.",
-        },
-        502
-      );
+      return json({ error: "Gemini returned an empty response." }, 502);
     }
 
-    return json({
-      reply,
-    });
+    return json({ reply });
   } catch (error) {
-    console.error("Hasnain AI error:", error);
+    console.error("Hasnain AI Gemini error:", error);
 
     return json(
       {

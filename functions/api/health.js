@@ -1,12 +1,12 @@
 export async function onRequestGet(context) {
-  const openaiSecretAvailable = Boolean(
-    context.env.OPENAI_API_KEY
+  const geminiSecretAvailable = Boolean(
+    context.env.GEMINI_API_KEY
   );
 
   return new Response(
     JSON.stringify({
       ok: true,
-      openaiSecretAvailable,
+      geminiSecretAvailable,
     }),
     {
       status: 200,
