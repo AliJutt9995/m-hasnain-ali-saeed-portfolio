@@ -1,7 +1,7 @@
 import { portfolioKnowledge } from "../../server/portfolioKnowledge.js";
 
 const OPENAI_URL = "https://api.openai.com/v1/responses";
-const MODEL = "gpt-6-luna";
+const MODEL = "gpt-5.6-luna";
 
 const OUT_OF_SCOPE =
   "I’m Hasnain AI, the portfolio assistant for M. Hasnain Ali Saeed. I can only answer questions about Hasnain’s professional profile, skills, services, projects, experience, ThemeForest work, availability, and contact information.";
