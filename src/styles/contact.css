@@ -345,7 +345,12 @@
   .contact-info {
     text-align: center;
   }
-
+.contact-methods span{
+text-align: left;
+}
+.contact-methods strong{
+text-align: left;
+}
   .contact-info h2,
   .contact-info > p {
     margin-left: auto;
